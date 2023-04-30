@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章生成chat</title>
+</head>
+<body>
+    <div>
+        <div>主人公：<input type="text" id="subject"> </div>
+        <div>どこ：<input type="text" id="place">で</div>
+        <div>何：<input type="text" id="thing">を</div>
+        <div>どうした：<input type="text" id="action"> </div>
+        <div id="input"style="height: 20px;"></div>
+
+        <div>
+            <!-- <textarea id="text" cols="30" rows="10"></textarea> -->
+            <button id="send">決定</button><br>
+            <button id="reset">次を入れる</button><br>
+            <button id="generate">文章生成</button>
+        </div>
+        <div id="output"style="overflow: auto; "></div>
+        <button id="delete">リセット</button>
+
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+        import { getDatabase, ref, push, set, onChildAdded, remove, onChildRemoved } 
+        from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCHR6FQCT7khX-04iOmKR_MZxs3I5dz8xA",
+          authDomain: "kadaichat-eda9e.firebaseapp.com",
+          projectId: "kadaichat-eda9e",
+          storageBucket: "kadaichat-eda9e.appspot.com",
+          messagingSenderId: "89475763685",
+          appId: "1:89475763685:web:0bddf5101257f0d3de730c"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);//RealtimeDBに接続
+        const dbRef = ref(db,"kadaichat");//RealtimeDB内の"kadaichat"を使うよ
+        
+         //ストックされたデータを格納する配列を定義
+         let dataArr = [];
+
+        //送信のイベントを作る
+        $("#send").on("click",function() {
+        const msg = {
+        subject: $("#subject").val(),
+        place: $("#place").val(),
+        thing: $("#thing").val(),
+        action: $("#action").val(),
+        // text: $("#text").val()
+        }
+        const newPostRef = push(dbRef); //Pushできる状況を作って
+        set(newPostRef,msg);      //ユニークkeyとmsgを一緒に送っている
+
+        });
+
+        $("#reset").on("click",function(){
+        $("#subject").val('');
+        $("#place").val('');
+        $("#thing").val('');
+        $("#action").val('');
+        });
+
+        $("#generate").on("click",function(){
+            let sentence = generateSentence();
+            $("#output").append(sentence +'<br>');
+        });
+
+        function generateSentence() {
+            let subjectIndex = Math.floor(Math.random() * 24); // subjectのインデックスをランダムに決定
+            let placeIndex = Math.floor(Math.random() * 23); // placeのインデックスをランダムに決定
+            let thingIndex = Math.floor(Math.random() * 22); // thingのインデックスをランダムに決定
+            let actionIndex = Math.floor(Math.random() * 21); // actionのインデックスをランダムに決定
+
+            // dataArrからランダムに選択した各カテゴリーの要素を取得
+            let subject = dataArr[subjectIndex].subject;
+            let place = dataArr[placeIndex].place;
+            let thing = dataArr[thingIndex].thing;
+            let action = dataArr[actionIndex].action;
+
+            let sentence = `${subject}は_${place}で_${thing}を_${action}。`;
+            return sentence;
+        }
+        
+        // 普通に生成する場合
+        // function generateSentence() {
+        // let msg = dataArr[Math.floor(Math.random() * dataArr.length)];
+        // let sentence = `${msg.subject}は_${msg.place}で_${msg.thing}を_${msg.action}。`;
+        // return sentence;
+        // }
+
+        onChildAdded(dbRef,function(data){
+            const msg = data.val();
+            dataArr.push(msg);
+            // const sentence = `${msg.subject}は_${msg.place}で_${msg.thing}を_${msg.action}。`;
+            // $("#output").append(sentence +'<br>');
+        });
+
+
+        $("#delete").on("click",function(){
+            $("#output").empty();
+        })
+
+
+      </script>
+
+    
+</body>
+</html>
