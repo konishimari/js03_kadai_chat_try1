@@ -1,4 +1,55 @@
 @charset "UTL-8";
-.container{
+html{
+    font-size: 62.5;  /* 16px × 62.5% = 10px */
+}
+body{
+    color: #333;
+    font-family: , "ヒラギノ丸ゴproN","Helvetica"
+    font-size: 1.0rem;
+    line-height: 2.0rem;
     background-color: gold;
 }
+.site_title{
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 50px 0 50px 0;
+
+}
+
+.wrapper_input{
+    display: flex;
+    margin: 0 50px 50px 50px;
+}
+.wrapper_subject{
+    margin: 0 5px ;
+}
+.wrapper_place{
+    margin: 0 5px ;
+}
+.wrapper_thing{
+    margin: 0 5px ;
+}
+.wrapper_action{
+    margin: 0 5px ;
+}
+
+.wrapper_output{
+    margin: 0 50px 50px 55px;
+}
+
+/* a.btn--yellow {
+    color: #333;
+    background-color: gold;
+    border-bottom: 5px solid rgb(199, 151, 29);
+  }
+  a.btn--orange:hover {
+    margin-top: 3px;
+    color: #333;
+    background: goldenrod;
+    border-bottom: 2px solid rgb(194, 147, 28);
+  }
+  a.btn--shadow {
+    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  } */

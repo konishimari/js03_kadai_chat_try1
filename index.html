@@ -10,28 +10,39 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-    <div class="wrapper ">
-    
-        <h1 class="text-center">Chat : Generate Sentence
-        </h1>
-        <div>主人公：<input type="text" id="subject"> </div>
-        <div>どこ：<input type="text" id="place">で</div>
-        <div>何：<input type="text" id="thing">を</div>
-        <div>どうした：<input type="text" id="action"> </div>
-        <div id="input"style="height: 20px;"></div>
+    <boad>
+        <h1 class="site_title">Chat : Generate Sentence</h1>
+            <div class="wrapper_input">
+                <div class="wrapper_subject">
+                    <div>主人公：は<input type="text" id="subject"></div>
+                </div>
+                <div class="wrapper_place">
+                    <div>どこ：で<input type="text" id="place"></div>
+                </div>
+                <div class="wrapper_thing">
+                    <div>何：を<input type="text" id="thing"></div>
+                </div>
+                <div class="wrapper_action">
+                    <div>どうした：<input type="text" id="action"> </div>
+                </div>
+                <div id="input"style="height: 18px;"></div>
+            </div>
+            <div class="wrapper_output">
+                <div>
+                    <!-- <textarea id="text" cols="30" rows="10"></textarea> -->
+                    <button id="send">決定</button><br>
+                    <button id="reset">次を入れる</button><br>
+                </div>
+                <div>
+                    <!-- <a  href="" class="btn btn--yellow btn-- cubic btn--shadow" id="generate" >文章生成</a> -->
+                    <button id="generate">文章生成</button>
+                </div>
+                <div id="output"style="overflow: auto; "></div>
+                <button id="delete">リセット</button>
+            </div>
 
-        <div>
-            <!-- <textarea id="text" cols="30" rows="10"></textarea> -->
-            <button id="send">決定</button><br>
-            <button id="reset">次を入れる</button><br>
-            <button id="generate">文章生成</button>
-        </div>
-        <div id="output"style="overflow: auto; "></div>
-        <button id="delete">リセット</button>
-
-    </div>
-    </div>
+        
+    </boad>
     
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -88,10 +99,10 @@
         });
 
         function generateSentence() {
-            let subjectIndex = Math.floor(Math.random() * 24); // subjectのインデックスをランダムに決定
-            let placeIndex = Math.floor(Math.random() * 23); // placeのインデックスをランダムに決定
-            let thingIndex = Math.floor(Math.random() * 22); // thingのインデックスをランダムに決定
-            let actionIndex = Math.floor(Math.random() * 21); // actionのインデックスをランダムに決定
+            let subjectIndex = Math.floor(Math.random() * 27); // subjectのインデックスをランダムに決定
+            let placeIndex = Math.floor(Math.random() * 25); // placeのインデックスをランダムに決定
+            let thingIndex = Math.floor(Math.random() * 26); // thingのインデックスをランダムに決定
+            let actionIndex = Math.floor(Math.random() * 27); // actionのインデックスをランダムに決定
 
             // dataArrからランダムに選択した各カテゴリーの要素を取得
             let subject = dataArr[subjectIndex].subject;
@@ -99,7 +110,7 @@
             let thing = dataArr[thingIndex].thing;
             let action = dataArr[actionIndex].action;
 
-            let sentence = `${subject}は_${place}で_${thing}を_${action}。`;
+            let sentence = ` ▶︎${subject}は__${place}で__${thing}を__${action}。`;
             return sentence;
         }
         
