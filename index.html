@@ -11,7 +11,7 @@
 </head>
 <body>
     <boad>
-        <h1 class="site_title">Chat : Generate Sentence</h1>
+        <h1 class="site_title">Generate Sentence</h1>
             <div class="wrapper_input">
                 <div class="wrapper_subject">
                     <div>主人公：は<input type="text" id="subject"></div>
@@ -100,8 +100,8 @@
 
         function generateSentence() {
             let subjectIndex = Math.floor(Math.random() * 27); // subjectのインデックスをランダムに決定
-            let placeIndex = Math.floor(Math.random() * 25); // placeのインデックスをランダムに決定
-            let thingIndex = Math.floor(Math.random() * 26); // thingのインデックスをランダムに決定
+            let placeIndex = Math.floor(Math.random() * 27); // placeのインデックスをランダムに決定
+            let thingIndex = Math.floor(Math.random() * 27); // thingのインデックスをランダムに決定
             let actionIndex = Math.floor(Math.random() * 27); // actionのインデックスをランダムに決定
 
             // dataArrからランダムに選択した各カテゴリーの要素を取得
