@@ -97,7 +97,7 @@
             let sentence = generateSentence();
             $("#output").append(sentence +'<br>');
         });
-
+        
         function generateSentence() {
             let subjectIndex = Math.floor(Math.random() * 27); // subjectのインデックスをランダムに決定
             let placeIndex = Math.floor(Math.random() * 27); // placeのインデックスをランダムに決定
@@ -110,7 +110,7 @@
             let thing = dataArr[thingIndex].thing;
             let action = dataArr[actionIndex].action;
 
-            let sentence = ` ▶︎${subject}は__${place}で__${thing}を__${action}。`;
+            let sentence = ` <div class=sentences><div class= "zoomin01">▶︎${subject}は__</div><div class= "zoomin02">${place}で__</div><div class= "zoomin03">${thing}を__</div><div class= "zoomin04">${action}。</div>`;
             return sentence;
         }
         

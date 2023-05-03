@@ -37,19 +37,50 @@ body{
 .wrapper_output{
     margin: 0 50px 50px 55px;
 }
+    /* fadein エフェクト */
+    /* .fadein01{
+    animation: fadeIn 3s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;}
+    .fadein02{
+    animation: fadeIn 10s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;}
+    .fadein03{
+    animation: fadeIn 20s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;}
+    .fadein04{
+    animation: fadeIn 30s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;}
 
-/* a.btn--yellow {
-    color: #333;
-    background-color: gold;
-    border-bottom: 5px solid rgb(199, 151, 29);
-  }
-  a.btn--orange:hover {
-    margin-top: 3px;
-    color: #333;
-    background: goldenrod;
-    border-bottom: 2px solid rgb(194, 147, 28);
-  }
-  a.btn--shadow {
-    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
-    box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   } */
+
+
+.sentences{
+    display: flex;
+    justify-content: center;
+}
+  .zoomin01{
+    animation: zoomIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
+  } 
+  .zoomin02{
+    animation: zoomIn 3.8s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
+  } 
+  .zoomin03{
+    animation: zoomIn 6.8s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
+  } 
+  .zoomin04{
+    animation: zoomIn 9.8s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
+  } 
+  @keyframes zoomIn {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
